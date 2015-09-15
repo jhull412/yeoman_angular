@@ -1,1 +1,22 @@
-<p>This is the find view.</p>
+<form ng-submit="submit()" >
+
+	Search Foods:
+
+	<input type="text" ng-model="foodSearchTerms" name="foodSearchTerms" id="foodSearchTerms" focus="true" />
+
+	<input type="submit" class="btn btn-primary" value="Search" id="submit" />
+
+	<span>(Ex. 'apple pie')</span>
+	<br />
+	<br />
+	<table>
+		<tr>
+			<th>Food name</th>
+		</tr>
+		<tr ng-repeat="food in foods">
+		<td><div ng-href="#/{{food.ndbno}}">{{ food.name }}</div></td>
+
+		</tr>
+	</table>
+
+</form>
