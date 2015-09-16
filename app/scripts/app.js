@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name myAppApp
+ * @name healthTracker
  * @description
- * # myAppApp
+ * # healthTracker
  *
  * Main module of the application.
  */
 angular
-  .module('myAppApp', [
+  .module('healthTracker', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -27,14 +27,14 @@ angular
       .when('/find', {
         templateUrl: 'views/find.html',
         controller: 'FindCtrl',
-        controllerAs: 'main'
+        controllerAs: 'find'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
-      .when('/foodDetails', {
+      .when('/foodDetails/:ndbo', {
         templateUrl: 'views/fooddetails.html',
         controller: 'FooddetailsCtrl',
         controllerAs: 'foodDetails'

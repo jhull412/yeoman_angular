@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name myAppApp.controller:MainCtrl
+ * @name healthTracker.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the myAppApp
+ * Controller of the healthTracker
  */
-angular.module('myAppApp')
+angular.module('healthTracker')
   .controller('MainCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

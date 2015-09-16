@@ -1,31 +1,41 @@
 'use strict';
-angular.module('myAppApp')
-  .controller('FindCtrl',['$scope', 'usdaNndbFactory', function ($scope, usdaNndbFactory) {
-    $scope.foods = [];
-    $scope.foodDetails = {};
+angular.module('healthTracker')
+    .controller('FindCtrl', ['$scope', 'usdanndbFactory', function ($scope, usdanndbFactory) {
+        $scope.foods = [];
+        $scope.foodDetails = {};
 
-    $scope.submit = function () {
-      usdaNndbFactory.getFoodsByKeyword($scope.foodSearchTerms)
-        .success(function (response) {
-          $scope.foods = response.list.item;
-        })
-        .error(function (data, status, headers, config){
-          $log.log(data.error + ' ' + status);
-        });
-    };
+        $scope.submit = function () {
+            var args = $scope.foodSearchTerms.split(' ');
+            var str = '';
+            args.forEach(function (arg) {
+                str = str + arg + '+';
+            });
+            str = str.substring(0, str.length - 1);
+            usdanndbFactory.getFoodsByKeyword(str)
+                .success(function (response) {
+                    $scope.foods = response.list.item;
+                })
+                .error(function (data, status, headers, config) {
+                    $log.log(data.error + ' ' + status);
+                });
+        };
 
-    $scope.getFoodDetails = function (nbdno) {
-      console.log(nbdno);
-      usdaNndbFactory.getAllFoodInfoByNdbno(nbdno)
-        .success(function (response) {
-          $scope.foodDetails = response.report.food;
-          console.log($scope.foodDetails);
+        $scope.getFoodDetails = function (nbdno) {
+            console.log(nbdno);
+            usdanndbFactory.getAllFoodInfoByNdbno(nbdno)
+                .success(function (response) {
+                    $scope.foodDetails = response.report.food;
+                    console.log($scope.foodDetails);
 
-        })
-        .error(function (data, status, headers, config){
-          $log.log(data.error + ' ' + status);
-        });
-    }
+                })
+                .error(function (data, status, headers, config) {
+                    $log.log(data.error + ' ' + status);
+                });
+        };
+
+        $scope.ChangeLocation = function(url){
+            window.location = url;
+        };
 
 
-  }]);
+    }]);

@@ -9,14 +9,17 @@
 	<span>(Ex. 'apple pie')</span>
 	<br />
 	<br />
-	<table>
+	<table class="table table-hover">
 		<tr>
 			<th>Food name</th>
+            <th>Category</th>
 		</tr>
-		<tr ng-repeat="food in foods">
-		<td><div ng-href="#/{{food.ndbno}}">{{ food.name }}</div></td>
-
+        <!--<a href="#/foodDetails/{{food.ndbno}}">-->
+		<tr ng-repeat="food in foods" ng-click="ChangeLocation('#/foodDetails/{{food.ndbno}}')">
+            <td id="food{{$index}}">{{food.name}}</td>
+            <td id="group">{{food.group}}</td>
 		</tr>
+        <!--</a>-->
 	</table>
 
 </form>
