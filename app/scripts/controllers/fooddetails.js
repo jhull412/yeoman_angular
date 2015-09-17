@@ -21,7 +21,9 @@ angular.module('healthTracker')
           $log.log(data.error + ' ' + status);
         });
     };
+
     $scope.init();
+
     console.log($stateParams.id);
 
   }]);
