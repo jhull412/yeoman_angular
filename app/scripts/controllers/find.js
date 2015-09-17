@@ -33,8 +33,9 @@ angular.module('healthTracker')
                 });
         };
 
-        $scope.ChangeLocation = function(url){
-            window.location = url;
+        $scope.ChangeLocation = function(ndbno){
+            //window.location = url;
+            $scope.$state.go("food-details", {"id":ndbno});
         };
 
 
