@@ -25,5 +25,19 @@ angular.module('healthTracker')
       $scope.$state.go("food-details", {"id": ndbno});
     };
 
+    $scope.init = function () {
+      var searchFoodState = usdanndbFactory.getSearchFoodState();
+      if(searchFoodState.searchTerms){
+        $scope.foodSearchTerms = searchFoodState.searchTerms;
+      }
+      if(searchFoodState.searchResults){
+        $scope.foods = searchFoodState.searchResults
+          .then(function (resultsPromise){
+            return resultsPromise;
+          });
+      }
+    };
+    $scope.init();
+
 
   }]);
