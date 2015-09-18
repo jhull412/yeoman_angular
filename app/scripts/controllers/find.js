@@ -21,7 +21,6 @@ angular.module('healthTracker')
     };
 
     $scope.ChangeLocation = function (ndbno) {
-      //window.location = url;
       $scope.$state.go("food-details", {"id": ndbno});
     };
 
@@ -31,9 +30,12 @@ angular.module('healthTracker')
         $scope.foodSearchTerms = searchFoodState.searchTerms;
       }
       if(searchFoodState.searchResults){
-        $scope.foods = searchFoodState.searchResults
-          .then(function (resultsPromise){
-            return resultsPromise;
+        searchFoodState.searchResults
+          .success(function (response) {
+            $scope.foods = response.list.item;
+          })
+          .error(function (data, status, headers, config) {
+            $log.log(data.error + ' ' + status);
           });
       }
     };

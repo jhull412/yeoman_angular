@@ -1,3 +1,4 @@
+'use strict';
 (function () {
   var usdanndbFactory = function ($http) {
 
@@ -11,8 +12,27 @@
 
     factory.getAllFoodInfoByNdbno = function (ndbno) {
       factory.selectedFoodID = ndbno;
-      factory.selectedFoodDetails = $http.get('http://api.nal.usda.gov/ndb/reports/?ndbno=' + ndbno + '&type=f&format=json&api_key=8LYPxewvViu0gC0tKN5PQtMFWqLMdMb9wVKeUTBZ');
-      return factory.selectedFoodDetails;
+      return $http.get('http://api.nal.usda.gov/ndb/reports/?ndbno=' + ndbno + '&type=f&format=json&api_key=8LYPxewvViu0gC0tKN5PQtMFWqLMdMb9wVKeUTBZ')
+        .then(function (response) {
+          factory.selectedFoodName = response.data.report.food.name;
+          factory.selectedFoodNutrients = factory.formatNutritionData(response.data.report.food.nutrients);
+          return {
+            id: factory.selectedFoodID,
+            name: factory.selectedFoodName,
+            nutrients: factory.selectedFoodNutrients
+          }
+        });
+    };
+
+    factory.formatNutritionData = function (foodDetails) {
+      var nutrients = {};
+      foodDetails.forEach(function (nutrient) {
+        nutrients[nutrient.name] = {
+          value: nutrient.value,
+          units: nutrient.unit
+        };
+      });
+      return nutrients;
     };
 
     factory.getSearchFoodState = function () {
