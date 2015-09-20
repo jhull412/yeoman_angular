@@ -6,10 +6,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 @import "compass/css3";
 
-.image {
-  width: 250px;
-  float: left;
-  margin: 20px;
+.aboutImage {
+  width: 19%;
+  display: inline-table;
+  padding-bottom: 5%;
+  padding-top: 5%;
+}
+.contactImage {
+  width: 35%
 }
 body {
   font-size: small;

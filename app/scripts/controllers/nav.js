@@ -1,17 +1,12 @@
 'use strict';
-
 /**
  * @ngdoc function
- * @name myAppApp.controller:NavCtrl
+ * @name healthTracker.controller:NavCtrl
  * @description
  * # NavCtrl
- * Controller of the myAppApp
+ * Controller of the healthTracker
  */
-angular.module('myAppApp')
-  .controller('NavCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+angular.module('healthTracker')
+    .controller('NavCtrl', function () {
+
+    });

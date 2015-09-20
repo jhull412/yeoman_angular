@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>HealthTracker</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -37,18 +37,12 @@
                 <a class="navbar-brand" ui-sref="/">HealthTracker</a>
             </div>
 
-            <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
+            <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-controller="HeaderCtrl">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a ui-sref="/">Home</a>
-                    </li>
-                    <li>
-                        <a ui-sref="food">Food</a>
-                    </li>
-                    <li>
-                        <a ui-sref="about">About</a>
-                    </li>
+                    <li ng-class="{ active: isActive('/main')}"><a ui-sref="/">Home</a></li>
+                    <li ng-class="{ active: isActive('/food')}"><a ui-sref="food">Food</a></li>
+                    <li ng-class="{ active: isActive('/about')}"><a ui-sref="about">About</a></li>
+                    <li ng-class="{ active: isActive('/contact')}"><a ui-sref="contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -61,7 +55,12 @@
 
 <div class="footer">
     <div class="container">
-        <p><span class="glyphicon glyphicon-tasks"></span> HealthTracker 2015</p>
+        <span class="glyphicon glyphicon-tasks"></span><span> HealthTracker Copyright &copy; 2015 Justin Hull</span>
+        <a href="http://www.nutritionix.com/api">
+            <img class="pull-right"
+                 src="https://d3jpl91pxevbkh.cloudfront.net/nutritionix/image/upload/v1363458498/attribution_jqfdgy.png"
+                 border="0">
+        </a>
     </div>
 </div>
 
@@ -102,6 +101,8 @@
 <script src="scripts/services/usdanndb.js"></script>
 <script src="scripts/controllers/fooddetails.js"></script>
 <script src="scripts/directives/focus.js"></script>
+<script src="scripts/controllers/header.js"></script>
+<script src="scripts/controllers/contact.js"></script>
 <!-- endbuild -->
 </body>
 </html>
