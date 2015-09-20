@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name healthTracker.controller:AboutCtrl
+ * @name healthTracker.controller:NavCtrl
  * @description
- * # AboutCtrl
+ * # NavCtrl
  * Controller of the healthTracker
  */
 angular.module('healthTracker')
-    .controller('AboutCtrl', function () {
+    .controller('NavCtrl', function () {
 
     });

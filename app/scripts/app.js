@@ -1,40 +1,42 @@
 'use strict';
-
 /**
  * @ngdoc overview
- * @name myAppApp
+ * @name healthTracker
  * @description
- * # myAppApp
+ * # healthTracker
  *
  * Main module of the application.
  */
 angular
-  .module('myAppApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .when('/search', {
-        templateUrl: 'views/search.html',
-        controller: 'SearchCtrl',
-        controllerAs: 'search'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+    .module('healthTracker', [
+        'ngAnimate', 'ngCookies', 'ngResource', 'ngRoute',
+        'ngSanitize', 'ngTouch', 'ui.router'])
+    .config(function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/main');
+        $stateProvider
+            .state('/', {
+                url: '/main',
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
+            }).state('food', {
+                url: '/food',
+                templateUrl: 'views/food.html',
+                controller: 'FindCtrl'
+            }).state('food-details', {
+                url: '/details/:id',
+                templateUrl: 'views/food-details.html',
+                controller: 'FooddetailsCtrl'
+            }).state('about', {
+                url: '/about',
+                templateUrl: 'views/about.html',
+                controller: 'AboutCtrl'
+            }).state('contact', {
+                url: '/contact',
+                templateUrl: 'views/contact.html',
+                controller: 'ContactCtrl'
+            });
+    })
+    .run(function ($rootScope, $state, $stateParams) {
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
+    });
