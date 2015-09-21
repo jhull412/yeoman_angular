@@ -29,8 +29,6 @@ angular.module('healthTracker')
                 .then(function (response) {
                     $scope.foods = response;
                     $scope.tableShown = true;
-                    $scope.appName = appSettings.appName;
-                    console.log($scope.appName);
                 });
 
         };

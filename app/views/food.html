@@ -12,7 +12,7 @@
 			<th>Food name</th>
             <th>Brand name</th>
 		</tr>
-		<tr ng-repeat="food in foods" ng-click="ChangeLocation('{{food.ndbno}}')">
+		<tr ng-repeat="food in foods" ng-click="ChangeLocation('{{food._id}}')">
             <td id="food{{$index}}">{{food.fields.item_name}}</td>
             <td id="brand">{{food.fields.brand_name}}</td>
 		</tr>

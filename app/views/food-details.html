@@ -1,12 +1,12 @@
-<h4>{{foodName}}</h4>
+<h4 class="text-center">{{foodName}}</h4>
 
 <section class="performance-facts">
     <header class="performance-facts__header">
         <h1 class="performance-facts__title">Nutrition Facts</h1>
 
-        <p>Serving Size 1/2 cup (about 82g)
+        <p>Serving Size {{foodNutrients.nf_serving_size_qty}} {{foodNutrients.nf_serving_size_unit}} (about {{foodNutrients.nf_serving_weight_grams}}g)
 
-        <p>Serving Per Container 8</p>
+        <p>Serving Per Container {{foodNutrients.nf_servings_per_container}}</p>
     </header>
     <table class="performance-facts__table">
         <thead>
@@ -20,11 +20,11 @@
         <tr>
             <th colspan="2">
                 <b>Calories</b>
-                200
+                {{foodNutrients.nf_calories | number:0}}
             </th>
             <td>
                 Calories from Fat
-                130
+                {{foodNutrients.nf_calories_from_fat | number:0}}
             </td>
         </tr>
         <tr class="thick-row">
@@ -35,10 +35,10 @@
         <tr>
             <th colspan="2">
                 <b>Total Fat</b>
-                14g
+                {{foodNutrients.nf_total_fat}}g
             </th>
             <td>
-                <b>22%</b>
+                <b>{{foodNutrients.nf_total_fat_pdv | default: '0' | number: 1}}%</b>
             </td>
         </tr>
         <tr>
@@ -46,10 +46,10 @@
             </td>
             <th>
                 Saturated Fat
-                9g
+                {{foodNutrients.nf_saturated_fat}}g
             </th>
             <td>
-                <b>22%</b>
+                <b>{{foodNutrients.nf_saturated_fat_pdv | number:1}}%</b>
             </td>
         </tr>
         <tr>
@@ -57,7 +57,7 @@
             </td>
             <th>
                 Trans Fat
-                0g
+                {{foodNutrients.nf_trans_fatty_acid | default: '0' | number: 0}}g
             </th>
             <td>
             </td>
@@ -65,28 +65,28 @@
         <tr>
             <th colspan="2">
                 <b>Cholesterol</b>
-                55mg
+                {{foodNutrients.nf_cholesterol | default: '0' | number: 0}}mg
             </th>
             <td>
-                <b>18%</b>
+                <b>{{foodNutrients.nf_cholesterol_pdv | number:1}}%</b>
             </td>
         </tr>
         <tr>
             <th colspan="2">
                 <b>Sodium</b>
-                40mg
+                {{foodNutrients.nf_sodium | default: '0' | number: 0}}mg
             </th>
             <td>
-                <b>2%</b>
+                <b>{{foodNutrients.nf_sodium_pdv | number:1}}%</b>
             </td>
         </tr>
         <tr>
             <th colspan="2">
                 <b>Total Carbohydrate</b>
-                17g
+                {{foodNutrients.nf_total_carbohydrate | default: '0' | number: 0}}g
             </th>
             <td>
-                <b>6%</b>
+                <b>{{foodNutrients.nf_total_carbohydrate_pdv | number:1}}%</b>
             </td>
         </tr>
         <tr>
@@ -94,10 +94,10 @@
             </td>
             <th>
                 Dietary Fiber
-                1g
+                {{foodNutrients.nf_dietary_fiber | default: '0' | number: 0}}g
             </th>
             <td>
-                <b>4%</b>
+                <b>{{foodNutrients.nf_dietary_fiber_pdv | number:1}}%</b>
             </td>
         </tr>
         <tr>
@@ -105,7 +105,7 @@
             </td>
             <th>
                 Sugars
-                14g
+                {{foodNutrients.nf_sugars | default: '0' | number: 0}}g
             </th>
             <td>
             </td>
@@ -113,7 +113,7 @@
         <tr class="thick-end">
             <th colspan="2">
                 <b>Protein</b>
-                3g
+                {{foodNutrients.nf_protein | default: '0' | number: 0}}g
             </th>
             <td>
             </td>
@@ -126,21 +126,21 @@
         <tr>
             <td colspan="2">
                 Vitamin A
-                10%
+                {{foodNutrients.nf_vitamin_a_dv | default: '0' | number: 0}}%
             </td>
-            <td>
+            <td colspan="2">
                 Vitamin C
-                0%
+                {{foodNutrients.nf_vitamin_c_dv | default: '0' | number: 0}}%
             </td>
         </tr>
         <tr class="thin-end">
             <td colspan="2">
                 Calcium
-                10%
+                {{foodNutrients.nf_calcium_dv | default: '0' | number: 0}}%
             </td>
-            <td>
+            <td colspan="2">
                 Iron
-                6%
+                {{foodNutrients.nf_iron_dv | default: '0' | number: 0}}%
             </td>
         </tr>
         </tbody>
