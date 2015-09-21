@@ -7,18 +7,24 @@
  * Controller of the healthTracker
  */
 angular.module('healthTracker')
-    .controller('FindCtrl', ['$scope', 'usdanndbFactory', function ($scope, usdanndbFactory) {
+    .controller('FindCtrl', ['$scope', 'usdanndbFactory', '$log', function ($scope, usdanndbFactory, $log) {
         $scope.foods = [];
         $scope.foodDetails = {};
+        $scope.foodSearchTerms = '';
         $scope.tableShown = false;
 
         $scope.submit = function () {
-            var args = $scope.foodSearchTerms.split(' ');
-            var str = '';
-            args.forEach(function (arg) {
-                str = str + arg + '+';
-            });
-            str = str.substring(0, str.length - 1);
+            if($scope.foodSearchTerms.indexOf(' ') != -1) {
+                var args = $scope.foodSearchTerms.split(' ');
+                var str = '';
+                args.forEach(function (arg) {
+                    str = str + arg + '+';
+                });
+                str = str.substring(0, str.length - 1);
+            } else {
+                var str = $scope.foodSearchTerms;
+            }
+
             usdanndbFactory.getFoodsByKeyword(str)
                 .success(function (response) {
                     $scope.foods = response.list.item;
@@ -27,6 +33,7 @@ angular.module('healthTracker')
                 .error(function (data, status, headers, config) {
                     $log.log(data.error + ' ' + status);
                 });
+
         };
 
         $scope.ChangeLocation = function (ndbno) {
