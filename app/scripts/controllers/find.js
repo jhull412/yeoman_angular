@@ -7,7 +7,7 @@
  * Controller of the healthTracker
  */
 angular.module('healthTracker')
-    .controller('FindCtrl', ['$scope', 'usdanndbFactory', '$log', function ($scope, usdanndbFactory, $log) {
+    .controller('FindCtrl', ['$scope', 'usdanndbFactory', '$log', 'appSettings', function ($scope, usdanndbFactory, $log, appSettings) {
         $scope.foods = [];
         $scope.foodDetails = {};
         $scope.foodSearchTerms = '';
@@ -26,12 +26,11 @@ angular.module('healthTracker')
             }
 
             usdanndbFactory.getFoodsByKeyword(str)
-                .success(function (response) {
-                    $scope.foods = response.list.item;
+                .then(function (response) {
+                    $scope.foods = response;
                     $scope.tableShown = true;
-                })
-                .error(function (data, status, headers, config) {
-                    $log.log(data.error + ' ' + status);
+                    $scope.appName = appSettings.appName;
+                    console.log($scope.appName);
                 });
 
         };

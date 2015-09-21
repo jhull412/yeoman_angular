@@ -10,11 +10,11 @@
 	<table class="table table-hover" ng-show="tableShown">
 		<tr>
 			<th>Food name</th>
-            <th>Category</th>
+            <th>Brand name</th>
 		</tr>
 		<tr ng-repeat="food in foods" ng-click="ChangeLocation('{{food.ndbno}}')">
-            <td id="food{{$index}}">{{food.name}}</td>
-            <td id="group">{{food.group}}</td>
+            <td id="food{{$index}}">{{food.fields.item_name}}</td>
+            <td id="brand">{{food.fields.brand_name}}</td>
 		</tr>
 	</table>
 </form>
