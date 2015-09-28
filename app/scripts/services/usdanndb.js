@@ -6,9 +6,8 @@
 
         factory.getFoodsByKeyword = function (args) {
             factory.searchTerms = args;
-            //factory.searchResults = $http.get('http://api.nal.usda.gov/ndb/search/?format=json&q=' + args + '&sort=n&max=25&offset=0&api_key=8LYPxewvViu0gC0tKN5PQtMFWqLMdMb9wVKeUTBZ');
-            var url = appSettings.nutritionixEndpoint + '/search/' + args + appSettings.defaultSearchOptions + '&appId=' + appSettings.nutritionixAppID + '&appKey=' + appSettings.nutritionixAppKey;
-            //var url = 'https://sites.google.com/site/justinhull412/find_food_apple.json';
+            //var url = appSettings.nutritionixEndpoint + '/search/' + args + appSettings.defaultSearchOptions + '&appId=' + appSettings.nutritionixAppID + '&appKey=' + appSettings.nutritionixAppKey;
+            var url = 'http://localhost:3000/food';
             return $http.get(url)
                 .then(function (response) {
                     factory.searchResults = response.data.hits;
@@ -18,8 +17,8 @@
 
         factory.getAllFoodInfoByNdbno = function (ndbno) {
             factory.selectedFoodID = ndbno;
-            var url = appSettings.nutritionixEndpoint + '/item?id=' + ndbno + '&appId=' + appSettings.nutritionixAppID + '&appKey=' + appSettings.nutritionixAppKey;
-            //var url = 'https://sites.google.com/site/justinhull412/selected_food_513fceb475b8dbbc21000f94.json';
+            //var url = appSettings.nutritionixEndpoint + '/item?id=' + ndbno + '&appId=' + appSettings.nutritionixAppID + '&appKey=' + appSettings.nutritionixAppKey;
+            var url = 'http://localhost:3000/selectedFood';
             return $http.get(url)
                 .then(function (response) {
                     factory.selectedFoodName = response.data.item_name + ' - ' + response.data.brand_name;
